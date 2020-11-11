@@ -8,7 +8,9 @@ const PetSchema = new Schema({
     Birthdate: { Type: String, default: '', required: false },
     Owner: { Type: Types.ObjectId, default: undefined, require: true },
     Status: { Type: Object, default: undefined, required: true },
-    CodePath: { Type: String, default: '', required: false }
+    CodePath: { Type: String, default: '', required: false },
+    ImagePaths: { Type:[String], default: [] },
+    VideoPaths: { Type: [String], default: [] }
 });
 
 module.exports = mongoose.model('Pet', PetSchema);

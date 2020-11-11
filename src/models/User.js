@@ -9,6 +9,6 @@ const UserSchema = new Schema({
     Password: { Type: String, default: '', required: true },
     AvatarImg: { Type: String, default: '', required: false },
     BannerImg: { Type: String, default: '', required: false }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('User', UserSchema);

@@ -21,11 +21,11 @@ app.use(expressSession({ secret: 'max', saveUninitialized: false, resave: false 
 
 //Routing
 //This goes at the very end of the 'use' statements
-app.use('/api/pets/', require('./Routes/petRoutes'));
-app.use('/api/users/', require('./Routes/userRoutes'));
-app.use('/api/post/', require('./Routes/postRoutes'));
-app.use('/api/comments/', require('./Routes/commentRoutes'));
-app.use('/api/media/', require('./Routes/mediaRoutes'));
+app.use('/api/pets/', require('./routes/petRoutes'));
+app.use('/api/users/', require('./routes/userRoutes'));
+app.use('/api/post/', require('./routes/postRoutes'));
+app.use('/api/comments/', require('./routes/commentRoutes'));
+app.use('/api/media/', require('./routes/mediaRoutes'));
 
 app.listen(app.get('port'), () => {
     console.log(`Hi, your server is running at port ${ app.get('port') }`);
