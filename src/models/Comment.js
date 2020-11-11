@@ -6,6 +6,6 @@ const CommentSchema = new Schema({
     User: { Type: Types.ObjectId, default: undefined, required: true },
     ParentPost: { Type: Types.ObjectId, default: undefined, required: true },
     ImgPaths: { Type: [String], default: [] }
-}, { timestamps: true } );
+}, { timestamps: true });
 
 module.exports = mongoose.model('Comment', CommentSchema);
