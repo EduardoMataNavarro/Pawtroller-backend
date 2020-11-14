@@ -1,5 +1,4 @@
-import mongoose, { Types } from 'mongoose';
-import { Schema } from mongoose;
+const {Schema, model } = require('mongoose');
 
 const PostSchema = new Schema({
     Title: { Type: String, default: 'Post title', required: true },
@@ -10,4 +9,4 @@ const PostSchema = new Schema({
     Dislikes: { Type: Types.ObjectId, default: undefined, required: false }
 }, { timestamps: true } );
 
-module.exports = mongoose.model('Post', PostSchema);
+module.exports = model('Post', PostSchema);

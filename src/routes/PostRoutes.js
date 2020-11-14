@@ -1,8 +1,20 @@
-import express from 'express';
-import Router from express.Router();
+const express = require("express");
+const router = express.Router();
 
 
-Router.get('/');
+const {
+    getAllPost,
+    getPost,
+    addPost,
+    updatePost,
+    deletePost
+} = require('../controllers/PostController');
+
+router.get('/',getAllPost);
+router.get('/:id',getPost);
+router.post('/',addPost);
+router.put('/',updatePost);
+router.delete('/:id',deletePost)
 
 
-module.exports = Router;
+module.exports = router;
