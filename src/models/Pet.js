@@ -1,6 +1,6 @@
-import mongoose, { Types } from 'mongoose';
-import { Schema } from mongoose;
-import StatusSchema from './StatusSchema';
+const mongoose, { Types } = require('mongoose');
+const { Schema } = mongoose;
+const StatusSchema = require('./StatusSchema');
 
 /*
 const StatusSchema = new Schema({
@@ -17,7 +17,7 @@ const PetSchema = new Schema({
     Age: { Type: Number, default: 0, required: false },
     Birthdate: { Type: String, default: '', required: false },
     Owner: { Type: Types.ObjectId, default: undefined, require: true },
-    Status: { Type: StatusSchema, default: undefined, required: true },
+    Status: StatusSchema,
     PetType: { Type: Types.ObjectId, default: undefined, required: true },
     CodePath: { Type: String, default: '', required: false },
     ImagePaths: { Type:[String], default: [] },

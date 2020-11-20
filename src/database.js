@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const db_route = process.env.BD_CONNECTION || 'mongodb://localhost/TestDatabase';
 

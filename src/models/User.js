@@ -1,5 +1,5 @@
-import mongoose, { Types } from 'mongoose';
-import { Schema } from mongoose;
+const mongoose, { Types } = require('mongoose');
+const { Schema } = mongoose;
 
 const UserSchema = new Schema({
     Name: { Type: String, default: '', required: true },

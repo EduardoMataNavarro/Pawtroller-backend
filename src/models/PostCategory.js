@@ -1,5 +1,5 @@
-import mongoose, { Types } from 'mongoose';
-import { Schema } from mongoose;
+const mongoose, { Types } = require('mongoose');
+const { Schema } = mongoose;
 
 const PostCategorySchema = new Schema({
     Name: { Type: String, default: 'Post title', required: true },
