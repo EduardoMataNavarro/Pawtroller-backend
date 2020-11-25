@@ -5,18 +5,18 @@ const User = require('../models/User');
 const AuthUserController = {};
 
 AuthUserController.Login = async (req, res) => {
-    const { email, password } = req.body
+    const { email, password } = req.body;
 
     const user = await User.findOne({ Email: email });
     if (user) {
-        const result = await bcrypt.compare(password, User.Password);
-        if (result) {
+        const verification = await bcrypt.compare(password, user.Password);
+        if (verification) {
             const payload = {
                 userId: user._id,
                 username: user.Name
             };
-            const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' });
-            res.set('auth-token', token).send({ message: 'success' });
+            const token = jwt.sign(payload, process.env.JWT_SECRET);
+            res.set('auth-token', token).send({ message: 'success', authToken: token });
         }
         else {
             res.status(401).send({ message: 'Incorrect email or password' });
@@ -28,7 +28,7 @@ AuthUserController.Login = async (req, res) => {
 };
 
 AuthUserController.Signup = async (req, res) => {
-    const { name, username, birthdate, email, password, avatarImg, bannerImg } = req.body;
+    const { name, username, birthdate, email, password } = req.body;
 
     try {
         const passSalt = await bcrypt.genSalt(12);
@@ -36,23 +36,20 @@ AuthUserController.Signup = async (req, res) => {
 
         const newUser = new User({
             Name: name,
-            Username: username,
+            Nickname: username,
             Birthdate: birthdate,
             Email: email,
-            Password: hashedPass,
-            AvatarImg: avatarImg,
-            BannerImg: bannerImg
+            Password: hashedPass
         });
-
-        const savedUser = newUser.save();
+        await newUser.save();
 
         const payload = {
-            userId: savedUser._id,
-            username: savedUser.Name
+            userId: newUser._id,
+            username: newUser.Name
         };
 
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' });
-        res.set('auth-token', token).send({ message: 'success' });
+        res.set('auth-token', token).send({ message: 'success', token: token });
 
     } catch (error) {
         res.send(error);

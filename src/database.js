@@ -4,7 +4,8 @@ const db_route = process.env.BD_CONNECTION || 'mongodb://localhost/TestDatabase'
 
 mongoose.connect(db_route, {
         useNewUrlParser: true,
-        useCreateIndex: true
+        useCreateIndex: true,
+        useUnifiedTopology: true
 });
 
 const connection = mongoose.connection;

@@ -1,8 +1,5 @@
-const { parse } = require('dotenv/types');
-const AWS = require('aws-sdk');
-const s3 = AWS.S3();
 const Pet = require('../models/Pet');
-const MediaUpload = require('../utils/MediaUpload');
+//const MediaUpload = require('../utils/MediaUpload');
 
 /* 
     Enviar un correo
@@ -10,7 +7,7 @@ const MediaUpload = require('../utils/MediaUpload');
 
 const PetController = {};
 
-PetController.Index() = async (req, res) => {
+PetController.Index = async (req, res) => {
     const pets = await Pet.find({});
     res.json(pets);
 };
@@ -36,7 +33,7 @@ PetController.AddMedia = async (req, res) => {
 
         const uploadObject = MediaUpload('pawtroller-images');
         const singleUpload = uploadObject('image');
-
+        /*
         singleUpload(req, res, function (err) {
             if (err) {
                 res.send({ error: err });
@@ -49,6 +46,7 @@ PetController.AddMedia = async (req, res) => {
                 res.send({ message: req.file.location });
             }
         });
+        */
     }
     if (mediaType == 'video') {
 

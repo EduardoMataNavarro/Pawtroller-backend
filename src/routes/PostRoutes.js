@@ -1,5 +1,5 @@
-import express from 'express';
-import Router from express.Router();
+const express = require('express');
+const Router = express.Router();
 
 
 Router.get('/');
