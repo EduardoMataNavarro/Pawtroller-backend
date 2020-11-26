@@ -18,10 +18,10 @@ app.use(express.json());
 
 //Routing
 //This goes at the very end of the 'use' statements
-app.use('/api/pets', require('./routes/petRoutes'));
-app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/auth', require('./routes/AuthRoutes'));
-app.use('/api/post', require('./routes/postRoutes'));
+app.use('/api/pets', require('./app/routes/petRoutes'));
+app.use('/api/users', require('./app/routes/userRoutes'));
+app.use('/api/auth', require('./app/routes/AuthRoutes'));
+app.use('/api/post', require('./app/routes/postRoutes'));
 
 app.listen(app.get('port'), () => {
     console.log(`Hi, your server is running at port ${ app.get('port') }`);
